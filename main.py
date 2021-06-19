@@ -32,34 +32,38 @@ from os import path
 
 
 def get_game_rawg_details(game_name):
-    RAWG_URL = f"https://api.rawg.io/api/games/{game_name}?key={RAWG_API_KEY}"
-    data = requests.get(RAWG_URL, headers=HEADERS).json()
-    if "redirect" in data:
-        game_name = data["slug"]
+    try:
         RAWG_URL = f"https://api.rawg.io/api/games/{game_name}?key={RAWG_API_KEY}"
         data = requests.get(RAWG_URL, headers=HEADERS).json()
-    elif "detail" in data:
-        return []
+        if "redirect" in data:
+            game_name = data["slug"]
+            RAWG_URL = f"https://api.rawg.io/api/games/{game_name}?key={RAWG_API_KEY}"
+            data = requests.get(RAWG_URL, headers=HEADERS).json()
+        elif "detail" in data:
+            return []
 
-    game_details = {
-        "achievements_count": data["parent_achievements_count"],
-        "avg_playtime": data["playtime"],
-        "youtube_videos_count": data["youtube_count"],
-        "singleplayer": False,
-        "multiplayer": False,
-        "game_series_count": data["game_series_count"],
-        "maturaty_rating": data["esrb_rating"]["name"][0] if data["esrb_rating"] else None,
-        "platforms_count": len(data["platforms"]),
-        "publisher": data["publishers"][0]["name"] if len(data["publishers"]) else None,
-        "developer": data["developers"][0]["name"] if len(data["developers"]) else None,
-        "ratings_count": data["ratings_count"],
-    }
-    for tag in data["tags"]:
-        if tag["slug"] == "singleplayer":
-            game_details["singleplayer"] = True
-        if tag["slug"] == "multiplayer":
-            game_details["multiplayer"] = False
-    return game_details
+        game_details = {
+            "achievements_count": data["parent_achievements_count"],
+            "avg_playtime": data["playtime"],
+            "youtube_videos_count": data["youtube_count"],
+            "singleplayer": False,
+            "multiplayer": False,
+            "game_series_count": data["game_series_count"],
+            "maturaty_rating": data["esrb_rating"]["name"][0] if data["esrb_rating"] else None,
+            "platforms_count": len(data["platforms"]),
+            "publisher": data["publishers"][0]["name"] if len(data["publishers"]) else None,
+            "developer": data["developers"][0]["name"] if len(data["developers"]) else None,
+            "ratings_count": data["ratings_count"],
+        }
+        for tag in data["tags"]:
+            if tag["slug"] == "singleplayer":
+                game_details["singleplayer"] = True
+            if tag["slug"] == "multiplayer":
+                game_details["multiplayer"] = True
+        return game_details
+    except json.decoder.JSONDecodeError:
+        print("There was a problem while decoding object...")
+        return []
 
 
 HEADERS = {
@@ -182,5 +186,5 @@ def metacritic_games_data(start_page, end_page):
     return current_data
 
 
-df = metacritic_games_data(1, 30)
+df = metacritic_games_data(11, 30)
 print(df)

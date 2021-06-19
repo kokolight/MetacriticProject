@@ -1,0 +1,91 @@
+,game_name,metascore,userscore,platforms_count,awards_count,publisher,developer,release_date,maturaty_rating,singleplayer,multiplayer,youtube_videos_count,achievements_count,ratings_count,average_playtime,game_series_count
+0,Hades,93,9.0,1,,,ryvedc,17-9-2020,,False,False,0,0,0,0,0
+1,Burnout 3: Takedown,94,7.7,3,,Electronic Arts,Criterion Games,7-9-2004,T,False,False,159866,0,104,23,3
+2,Street Fighter Alpha 3,93,8.6,3,,,Sony Interactive Entertainment,30-4-1999,T,False,False,0,0,2,0,0
+3,Grand Theft Auto III,93,8.2,7,,Capcom,Rockstar North,20-5-2002,M,True,False,1000000,22,1102,1,9
+4,Flipnote Studio,93,7.5,1,,Nintendo,,12-8-2009,,False,False,0,0,4,0,0
+5,Sid Meier's Civilization IV,94,8.3,2,,2K Games,Firaxis,25-10-2005,,True,False,1000000,0,285,1,5
+6,Call of Duty: Modern Warfare 2,94,6.5,4,,Activision Blizzard,Aspyr Media,10-11-2009,,True,False,1000000,53,1428,25,24
+7,Paper Mario,93,9.0,3,,Nintendo,Intelligent Systems,5-2-2001,E,False,False,1000000,0,113,5,5
+8,Metal Gear Solid 4: Guns of the Patriots,94,8.8,1,,Konami,Konami Digital Entertainment,12-6-2008,M,False,False,332744,19,522,20,7
+9,Gears of War 2,93,7.9,2,,Microsoft Studios,Epic Games,7-11-2008,M,False,False,1000000,79,567,22,8
+10,Minecraft,93,8.0,13,,Microsoft Studios,4J Studios,18-11-2011,,False,False,1000000,134,1582,26,4
+11,INSIDE,93,8.3,5,,Playdead,Playdead,29-6-2016,T,True,False,1000000,14,1784,4,0
+12,Diablo,94,8.7,3,,Electronic Arts,Blizzard North,31-12-1996,,True,False,1000000,0,348,1,5
+13,The Legend of Zelda: Skyward Sword,93,8.1,3,,Nintendo,Nintendo,20-11-2011,E,False,False,1000000,0,193,33,20
+14,Grand Theft Auto: San Andreas,93,8.9,10,,Capcom,Rockstar North,7-6-2005,M,True,False,1000000,55,2487,2,9
+15,The Witcher 3: Wild Hunt,93,9.4,4,,CD PROJEKT RED,CD PROJEKT RED,18-5-2015,M,True,False,1000000,49,4393,50,6
+16,Super Mario 3D World,93,8.9,2,,Nintendo,Nintendo,22-11-2013,E,False,False,1000000,0,177,58,17
+17,NHL 2002,92,8.3,4,,Electronic Arts,Electronic Arts Canada,24-9-2001,,True,False,0,0,5,0,0
+18,The Elder Scrolls IV: Oblivion,93,8.1,4,,2K Games,Bethesda Softworks,20-3-2007,M,False,False,686674,60,626,4,11
+19,Viewtiful Joe,93,8.3,1,,,Capcom U.S.A,7-10-2003,T,False,False,0,0,0,2,0
+20,Castlevania: Symphony of the Night,93,9.2,8,,Konami,Sony Interactive Entertainment,2-10-1997,,True,False,611708,12,367,19,19
+21,Tom Clancy's Splinter Cell,93,8.6,9,,Ubisoft Entertainment,Ubisoft,17-11-2002,,True,False,1000000,37,317,2,6
+22,Prince of Persia: The Sands of Time,92,8.8,5,,Ubisoft Entertainment,Ubisoft,6-11-2003,M,True,False,355496,10,648,2,13
+23,Persona 4 Golden,93,8.6,2,,SEGA,Atlus,20-11-2012,M,True,False,1000000,36,396,5,8
+24,Braid,93,8.5,7,,Microsoft Studios,Number None,6-8-2008,E,True,False,445150,24,771,2,0
+25,Journey,92,8.3,4,,Sony Computer Entertainment,Sony Interactive Entertainment,21-7-2015,,True,False,1000000,14,1896,2,0
+26,Unreal Tournament 2004,93,8.8,1,,Atari,Digital Extremes,16-3-2004,M,False,False,199529,0,121,3,6
+27,Rock Band,92,8.0,4,,Electronic Arts,Harmonix Music Systems,20-11-2007,T,False,False,1000000,50,129,33,0
+28,The Elder Scrolls V: Skyrim,92,6.6,4,,Bethesda Softworks,Bethesda Softworks,11-11-2011,M,True,False,1000000,76,3370,45,11
+29,World of Warcraft,93,7.4,2,,Blizzard Entertainment,,23-11-2004,T,False,False,1000000,0,524,129,4
+30,Resident Evil Code: Veronica,94,8.9,1,,Capcom,Capcom,29-2-2000,M,False,False,672420,0,59,0,21
+31,God of War,94,8.9,3,,Sony Computer Entertainment,SCE Santa Monica Studio,22-3-2005,M,False,False,759528,36,469,11,9
+32,Homeworld,93,8.8,1,,Sierra On-Line,Relic Entertainment,31-8-1999,,False,False,0,0,46,0,3
+33,Burnout 3: Takedown,93,9.0,3,,Electronic Arts,Criterion Games,7-9-2004,T,False,False,159866,0,104,23,3
+34,Mario Kart Super Circuit,93,7.7,3,,Nintendo,Intelligent Systems,26-8-2001,E,True,False,0,0,46,1,10
+35,Test Drive Le Mans,93,8.3,5,,SEGA,Atari,13-11-2000,,True,False,0,0,4,0,0
+36,BioShock Infinite,93,8.6,7,,2K Games,Aspyr Media,26-3-2013,M,True,False,1000000,144,3024,12,4
+37,Mass Effect 3,93,6.0,5,,Electronic Arts,BioWare,6-3-2012,M,False,False,1000000,70,1258,30,5
+38,Red Dead Redemption 2,93,6.1,3,,Rockstar Games,Rockstar Games,5-11-2019,M,True,False,1000000,40,3356,21,3
+39,Starcraft II: Wings of Liberty,93,8.3,2,,Blizzard Entertainment,,27-7-2010,T,False,False,1000000,0,188,13,0
+40,Eternal Darkness: Sanity's Requiem,92,8.7,1,,Nintendo,Silicon Knights,23-6-2002,,True,False,677189,0,27,0,0
+41,Call of Duty 4: Modern Warfare,92,8.5,8,,Square Enix,Raven Software,5-11-2007,M,True,False,1000000,0,1140,6,24
+42,Uncharted 4: A Thief's End,93,8.8,1,,Sony Computer Entertainment,Naughty Dog,10-5-2016,T,False,False,1000000,51,2741,0,4
+43,Hades,93,8.9,1,,,ryvedc,17-9-2020,,False,False,0,0,0,0,0
+44,NCAA Football 2004,94,8.3,3,,EA SPORTS,Electronic Arts Tiburon,16-7-2003,,True,False,0,0,0,0,0
+45,Bloodborne,92,8.8,1,,,Sony Interactive Entertainment,24-3-2015,M,False,False,1000000,10,1903,12,6
+46,God of War II,93,9.0,3,,Sony Computer Entertainment,Sony Interactive Entertainment,13-3-2007,,False,False,1000000,35,660,17,9
+47,Okami,93,9.1,2,,Capcom,Clover Studio,19-9-2006,,False,False,991513,0,83,1,0
+48,Metal Gear Solid V: The Phantom Pain,93,8.2,5,,Konami,Konami Digital Entertainment,1-9-2015,M,True,False,1000000,38,1943,27,7
+49,Mass Effect 3,93,5.7,5,,Electronic Arts,BioWare,5-3-2012,M,False,False,1000000,70,1258,30,5
+50,Skies of Arcadia,93,8.9,2,,SEGA,SEGA,13-11-2000,T,True,False,0,0,30,0,0
+51,Beat Saber,93,8.4,2,,Hyperbolic Magnetism,Hyperbolic Magnetism,21-5-2019,T,True,False,1000000,1,400,6,0
+52,SSX 3,93,8.8,5,,Electronic Arts,Electronic Arts Canada,20-10-2003,E,True,False,0,0,26,0,6
+53,Tony Hawk's Pro Skater 3,93,7.6,9,,Activision Blizzard,Gearbox Software,4-3-2002,,True,False,667178,0,107,5,4
+54,Half-Life: Alyx,93,9.2,1,,Valve,Valve Software,23-3-2020,M,True,False,600535,17,177,6,3
+55,Undertale,93,8.2,8,,8-4,8-4,18-9-2018,R,True,False,1000000,1,1212,5,1
+56,Prince of Persia: The Sands of Time,92,7.9,5,,Ubisoft Entertainment,Ubisoft,12-11-2003,M,True,False,355496,10,648,2,13
+57,Metal Gear Solid 3: Subsistence,94,9.1,3,,Konami,Kojima Productions,14-3-2006,M,False,False,0,0,2,0,0
+58,Fallout 3,93,8.4,4,,Bethesda Softworks,Bethesda Softworks,28-10-2008,M,True,False,1000000,74,1404,4,8
+59,Super Smash Bros. Ultimate,93,8.6,1,,Nintendo,Nintendo,7-12-2018,,False,False,1000000,0,853,0,5
+60,Grand Theft Auto: San Andreas,93,8.8,10,,Capcom,Rockstar North,7-6-2005,M,True,False,1000000,55,2487,2,9
+61,Virtua Fighter 4,94,8.1,1,,,,17-3-2002,,False,False,0,0,4,0,0
+62,Divinity: Original Sin II,93,8.8,4,,Larian Studios,Larian Studios,14-9-2017,,True,False,1000000,97,1008,22,1
+63,NBA 2K2,93,7.4,4,,SEGA,Visual Concepts,24-10-2001,,False,False,0,0,2,0,0
+64,Ori and the Will of the Wisps,93,8.7,4,,Microsoft Studios,Moon Studios,17-9-2020,,True,False,1000000,23,585,11,2
+65,Guitar Hero II,92,8.1,2,,Activison,Harmonix Music Systems,3-4-2007,,False,False,633641,50,89,10,0
+66,Wipeout XL,93,8.6,1,,Psygnosis,Psygnosis,30-9-1996,,False,False,0,0,1,0,0
+67,SSX Tricky,92,8.8,4,,EA Sports BIG,Electronic Arts Canada,5-11-2001,E,True,False,0,0,37,0,6
+68,Rock Band 3,93,8.0,4,,Electronic Arts,Harmonix Music Systems,26-10-2010,T,False,False,1000000,63,114,14,0
+69,Gran Turismo 2,93,9.0,2,,Sony Computer Entertainment,Polyphony Digital,30-11-1999,E,True,False,1000000,0,67,0,7
+70,Street Fighter IV,93,7.3,5,,Capcom,Capcom,17-2-2009,M,True,False,1000000,48,156,2,12
+71,SoulCalibur II,92,8.7,3,,Bandai Namco Entertainment,Project Soul,27-8-2003,T,True,False,580245,0,64,0,3
+72,Forza Horizon 4,92,8.2,3,,Microsoft Studios,Playground Games,28-9-2018,E,True,False,1000000,180,1011,10,4
+73,Company of Heroes,93,8.8,2,,SEGA,Feral Interactive,13-9-2006,,True,False,1000000,0,422,7,2
+74,Tom Clancy's Splinter Cell Pandora Tomorrow,93,8.6,8,,Ubisoft Entertainment,Ubisoft,23-3-2004,T,True,False,139195,37,149,10,6
+75,World Soccer Winning Eleven 7 International,93,8.3,1,,Konami,Konami Digital Entertainment,17-2-2004,,False,False,0,0,21,75,18
+76,Pac-Man Championship Edition DX,93,7.6,4,,Bandai Namco Entertainment,BANDAI NAMCO Entertainment America,17-11-2010,E,True,False,29156,16,137,1,28
+77,Braid,93,7.8,7,,Microsoft Studios,Number None,12-11-2009,E,True,False,445150,24,771,2,0
+78,Super Smash Bros. Brawl,93,8.8,1,,Nintendo,Intelligent Systems,9-3-2008,T,False,False,1000000,0,246,24,5
+79,Resident Evil 2,93,8.6,10,,Capcom,Sony Interactive Entertainment,25-1-2019,M,True,False,446922,29,642,13,21
+80,NBA 2K1,93,7.2,1,,SEGA,Visual Concepts,1-11-2000,,False,False,0,0,2,0,0
+81,SoulCalibur II,93,8.9,3,,Bandai Namco Entertainment,Project Soul,27-8-2003,T,True,False,580245,0,64,0,3
+82,Grand Theft Auto: Chinatown Wars,93,8.3,5,,Rockstar Games,Rockstar North,17-3-2009,M,False,False,234749,0,127,0,9
+83,God of War III,92,8.8,1,,Sony Computer Entertainment,SCE Studios Santa Monica,16-3-2010,,False,False,1000000,18,467,10,9
+84,Uncharted 3: Drake's Deception,92,8.4,2,,Sony Computer Entertainment,Naughty Dog,1-11-2011,T,False,False,1000000,164,1544,12,4
+85,Star Wars: Knights of the Old Republic,93,9.0,7,,Aspyr,Aspyr Media,18-11-2003,M,False,False,1000000,0,1056,2,2
+86,Madden NFL 2004,94,7.2,6,,Electronic Arts,Electronic Arts Tiburon,12-8-2003,,True,False,0,0,5,0,0
+87,Persona 5,93,8.7,2,,Deep Silver,Atlus,4-4-2017,M,True,False,1000000,38,1099,105,8
+88,Star Wars: Knights of the Old Republic,94,9.1,7,,Aspyr,Aspyr Media,17-7-2003,M,False,False,1000000,0,1056,2,2
+89,SSX,93,8.2,2,,Electronic Arts,Electronic Arts,30-10-2000,E,False,False,416781,50,130,17,6

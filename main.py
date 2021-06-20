@@ -6,6 +6,7 @@ import threading
 import re
 import os.path
 from os import path
+import json
 
 # Retrieving Data from metacritic "https://metacritic.com" (Main) some other details from API "https://rawg.io"
 
@@ -26,7 +27,8 @@ from os import path
 - Is part of a series
 - Publisher
 - Developer
-- Number of consoles
+- Which consoles
+- What genres
 - Maturaty Rating
 """
 
@@ -35,32 +37,63 @@ def get_game_rawg_details(game_name):
     try:
         RAWG_URL = f"https://api.rawg.io/api/games/{game_name}?key={RAWG_API_KEY}"
         data = requests.get(RAWG_URL, headers=HEADERS).json()
-        if "redirect" in data:
+        # Check if not redirected to another page
+        while "redirect" in data:
             game_name = data["slug"]
             RAWG_URL = f"https://api.rawg.io/api/games/{game_name}?key={RAWG_API_KEY}"
             data = requests.get(RAWG_URL, headers=HEADERS).json()
-        elif "detail" in data:
+        # Not found
+        if "detail" in data:
             return []
-
-        game_details = {
-            "achievements_count": data["parent_achievements_count"],
-            "avg_playtime": data["playtime"],
-            "youtube_videos_count": data["youtube_count"],
-            "singleplayer": False,
-            "multiplayer": False,
-            "game_series_count": data["game_series_count"],
-            "maturaty_rating": data["esrb_rating"]["name"][0] if data["esrb_rating"] else None,
-            "platforms_count": len(data["platforms"]),
-            "publisher": data["publishers"][0]["name"] if len(data["publishers"]) else None,
-            "developer": data["developers"][0]["name"] if len(data["developers"]) else None,
-            "ratings_count": data["ratings_count"],
-        }
-        for tag in data["tags"]:
-            if tag["slug"] == "singleplayer":
-                game_details["singleplayer"] = True
-            if tag["slug"] == "multiplayer":
-                game_details["multiplayer"] = True
-        return game_details
+        if len(data):
+            game_details = {
+                "achievements_count": data["parent_achievements_count"],
+                "avg_playtime": data["playtime"],
+                "youtube_videos_count": data["youtube_count"],
+                "singleplayer": False,
+                "multiplayer": False,
+                "game_series_count": data["game_series_count"],
+                "maturaty_rating": data["esrb_rating"]["name"][0] if data["esrb_rating"] else None,
+                "onXbox": False,
+                "onPC": False,
+                "onPlaystation": False,
+                "onSwitch": False,
+                "onWii": False,
+                "onMac": False,
+                "onIOS": False,
+                "onAndroid": False,
+                "genres": [],
+                "platforms_count": len(data["platforms"]),
+                "publisher": data["publishers"][0]["name"] if len(data["publishers"]) else None,
+                "developer": data["developers"][0]["name"] if len(data["developers"]) else None,
+                "ratings_count": data["ratings_count"],
+            }
+            for tag in data["tags"]:
+                if tag["slug"] == "singleplayer":
+                    game_details["singleplayer"] = True
+                if tag["slug"] == "multiplayer":
+                    game_details["multiplayer"] = True
+            for platform in data["platforms"]:
+                if bool(re.match("playstation", platform["platform"]["slug"])):
+                    game_details["onPlastation"] = True
+                if bool(re.match("xbox", platform["platform"]["slug"])):
+                    game_details["onXbox"] = True
+                if bool(re.match("pc", platform["platform"]["slug"])):
+                    game_details["onPC"] = True
+                if bool(re.match("switch", platform["platform"]["slug"])):
+                    game_details["onSwitch"] = True
+                if bool(re.match("macos", platform["platform"]["slug"])):
+                    game_details["onMac"] = True
+                if bool(re.match("ios", platform["platform"]["slug"])):
+                    game_details["onIOS"] = True
+                if bool(re.match("android", platform["platform"]["slug"])):
+                    game_details["onAndroid"] = True
+            for genre in data["genres"]:
+                game_details["genres"].append(genre["slug"])
+            return game_details
+        else:
+            print(f"{game_name} is not available!")
+            return []
     except json.decoder.JSONDecodeError:
         print("There was a problem while decoding object...")
         return []
@@ -69,7 +102,7 @@ def get_game_rawg_details(game_name):
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36"
 }
-RAWG_API_KEY = "1a30728a7348454fa81a4a98e057442d"
+RAWG_API_KEY = "2ae69e21c8c349e9816a0382283df150"
 FILE_NAME = "video_games_ratings.csv"
 BASE_URL = "https://www.metacritic.com"
 BROWSE_URL = BASE_URL + "/browse/games/score/metascore/all/all/filtered?"
@@ -77,7 +110,6 @@ COLUMNS = [
     "game_name",
     "metascore",
     "userscore",
-    "platforms_count",
     "awards_count",
     "publisher",
     "developer",
@@ -85,6 +117,14 @@ COLUMNS = [
     "maturaty_rating",
     "singleplayer",
     "multiplayer",
+    "onXbox",
+    "onPC",
+    "onPlaystation",
+    "onSwitch",
+    "onWii",
+    "onMac",
+    "onIOS",
+    "onAndroid",
     "youtube_videos_count",
     "achievements_count",
     "ratings_count",
@@ -113,7 +153,6 @@ def get_game_data(game_slug, game_name, metascore, userscore, release_date):
     if len(rawg_details) == 0:
         return []
 
-    # meta_score = soup.find('div', class_="metascore_w").text
     return {
         "game_name": game_name,
         "release_date": release_date,
@@ -122,13 +161,21 @@ def get_game_data(game_slug, game_name, metascore, userscore, release_date):
         "publisher": rawg_details["publisher"],
         "developer": rawg_details["developer"],
         "maturaty_rating": rawg_details["maturaty_rating"],
-        "platforms_count": rawg_details["platforms_count"],
         "average_playtime": rawg_details["avg_playtime"],
         "achievements_count": rawg_details["achievements_count"],
         "youtube_videos_count": rawg_details["youtube_videos_count"],
         "singleplayer": rawg_details["singleplayer"],
         "multiplayer": rawg_details["multiplayer"],
+        "onXbox": rawg_details["onXbox"],
+        "onPC": rawg_details["onPC"],
+        "onPlaystation": rawg_details["onPlaystation"],
+        "onSwitch": rawg_details["onSwitch"],
+        "onWii": rawg_details["onWii"],
+        "onMac": rawg_details["onMac"],
+        "onIOS": rawg_details["onIOS"],
+        "onAndroid": rawg_details["onAndroid"],
         "ratings_count": rawg_details["ratings_count"],
+        "genres": rawg_details["genres"],
         "game_series_count": rawg_details["game_series_count"],
     }
 
@@ -186,5 +233,5 @@ def metacritic_games_data(start_page, end_page):
     return current_data
 
 
-df = metacritic_games_data(11, 30)
+df = metacritic_games_data(50, 100)
 print(df)

@@ -233,5 +233,5 @@ def metacritic_games_data(start_page, end_page):
     return current_data
 
 
-df = metacritic_games_data(50, 100)
+df = metacritic_games_data(100, 150)
 print(df)

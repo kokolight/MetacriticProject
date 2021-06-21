@@ -8,6 +8,54 @@ import os.path
 from os import path
 import json
 
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36"
+}
+RAWG_API_KEY = ""
+FILE_NAME = "video_games_ratings.csv"
+BASE_URL = "https://www.metacritic.com"
+BROWSE_URL = BASE_URL + "/browse/games/score/metascore/all/all/filtered?"
+COLUMNS = [
+    "game_name",
+    "metascore",
+    "userscore",
+    "awards_count",
+    "publisher",
+    "developer",
+    "release_date",
+    "maturaty_rating",
+    "singleplayer",
+    "multiplayer",
+    "onXbox",
+    "onPC",
+    "onPlaystation",
+    "onSwitch",
+    "onWii",
+    "onMac",
+    "onIOS",
+    "onAndroid",
+    "youtube_videos_count",
+    "achievements_count",
+    "ratings_count",
+    "average_playtime",
+    "game_series_count",
+]
+
+month_dict = {
+    "January": "1",
+    "February": "2",
+    "March": "3",
+    "April": "4",
+    "May": "5",
+    "June": "6",
+    "July": "7",
+    "August": "8",
+    "September": "9",
+    "October": "10",
+    "November": "11",
+    "December": "12",
+}
+
 # Retrieving Data from metacritic "https://metacritic.com" (Main) some other details from API "https://rawg.io"
 
 # Data we scrape
@@ -99,55 +147,6 @@ def get_game_rawg_details(game_name):
         return []
 
 
-HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36"
-}
-RAWG_API_KEY = "2ae69e21c8c349e9816a0382283df150"
-FILE_NAME = "video_games_ratings.csv"
-BASE_URL = "https://www.metacritic.com"
-BROWSE_URL = BASE_URL + "/browse/games/score/metascore/all/all/filtered?"
-COLUMNS = [
-    "game_name",
-    "metascore",
-    "userscore",
-    "awards_count",
-    "publisher",
-    "developer",
-    "release_date",
-    "maturaty_rating",
-    "singleplayer",
-    "multiplayer",
-    "onXbox",
-    "onPC",
-    "onPlaystation",
-    "onSwitch",
-    "onWii",
-    "onMac",
-    "onIOS",
-    "onAndroid",
-    "youtube_videos_count",
-    "achievements_count",
-    "ratings_count",
-    "average_playtime",
-    "game_series_count",
-]
-
-month_dict = {
-    "January": "1",
-    "February": "2",
-    "March": "3",
-    "April": "4",
-    "May": "5",
-    "June": "6",
-    "July": "7",
-    "August": "8",
-    "September": "9",
-    "October": "10",
-    "November": "11",
-    "December": "12",
-}
-
-
 def get_game_data(game_slug, game_name, metascore, userscore, release_date):
     rawg_details = get_game_rawg_details(game_slug)
     if len(rawg_details) == 0:
@@ -232,6 +231,8 @@ def metacritic_games_data(start_page, end_page):
         current_data.to_csv("./video_games_ratings.csv", mode="w")
     return current_data
 
+
+# Main
 
 df = metacritic_games_data(100, 150)
 print(df)

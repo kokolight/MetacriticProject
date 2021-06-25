@@ -5,13 +5,13 @@ import pandas as pd
 import threading
 import re
 import os.path
-from os import path
+from os import error, path
 import json
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36"
 }
-RAWG_API_KEY = ""
+RAWG_API_KEY = "224eb0b778a54d6cafafc1ac80deb15d"
 FILE_NAME = "video_games_ratings.csv"
 BASE_URL = "https://www.metacritic.com"
 BROWSE_URL = BASE_URL + "/browse/games/score/metascore/all/all/filtered?"
@@ -19,11 +19,10 @@ COLUMNS = [
     "game_name",
     "metascore",
     "userscore",
-    "awards_count",
     "publisher",
     "developer",
     "release_date",
-    "maturaty_rating",
+    "maturity_rating",
     "singleplayer",
     "multiplayer",
     "onXbox",
@@ -101,7 +100,7 @@ def get_game_rawg_details(game_name):
                 "singleplayer": False,
                 "multiplayer": False,
                 "game_series_count": data["game_series_count"],
-                "maturaty_rating": data["esrb_rating"]["name"][0] if data["esrb_rating"] else None,
+                "maturity_rating": data["esrb_rating"]["name"][0] if data["esrb_rating"] else None,
                 "onXbox": False,
                 "onPC": False,
                 "onPlaystation": False,
@@ -122,19 +121,21 @@ def get_game_rawg_details(game_name):
                 if tag["slug"] == "multiplayer":
                     game_details["multiplayer"] = True
             for platform in data["platforms"]:
-                if bool(re.match("playstation", platform["platform"]["slug"])):
-                    game_details["onPlastation"] = True
-                if bool(re.match("xbox", platform["platform"]["slug"])):
+                if bool(re.match(".*playstation.*", platform["platform"]["slug"])):
+                    game_details["onPlaystation"] = True
+                if bool(re.match(".*xbox.*", platform["platform"]["slug"])):
                     game_details["onXbox"] = True
-                if bool(re.match("pc", platform["platform"]["slug"])):
+                if bool(re.match(".*pc.*", platform["platform"]["slug"])):
                     game_details["onPC"] = True
-                if bool(re.match("switch", platform["platform"]["slug"])):
+                if bool(re.match(".*switch.*", platform["platform"]["slug"])):
                     game_details["onSwitch"] = True
-                if bool(re.match("macos", platform["platform"]["slug"])):
+                if bool(re.match(".*wii.*", platform["platform"]["slug"])):
+                    game_details["onWii"] = True
+                if bool(re.match(".*macos.*", platform["platform"]["slug"])):
                     game_details["onMac"] = True
-                if bool(re.match("ios", platform["platform"]["slug"])):
+                if bool(re.match(".*ios.*", platform["platform"]["slug"])):
                     game_details["onIOS"] = True
-                if bool(re.match("android", platform["platform"]["slug"])):
+                if bool(re.match(".*android.*", platform["platform"]["slug"])):
                     game_details["onAndroid"] = True
             for genre in data["genres"]:
                 game_details["genres"].append(genre["slug"])
@@ -142,8 +143,9 @@ def get_game_rawg_details(game_name):
         else:
             print(f"{game_name} is not available!")
             return []
-    except json.decoder.JSONDecodeError:
-        print("There was a problem while decoding object...")
+    except error:
+        print(error)
+        exit
         return []
 
 
@@ -159,7 +161,7 @@ def get_game_data(game_slug, game_name, metascore, userscore, release_date):
         "userscore": userscore,
         "publisher": rawg_details["publisher"],
         "developer": rawg_details["developer"],
-        "maturaty_rating": rawg_details["maturaty_rating"],
+        "maturity_rating": rawg_details["maturity_rating"],
         "average_playtime": rawg_details["avg_playtime"],
         "achievements_count": rawg_details["achievements_count"],
         "youtube_videos_count": rawg_details["youtube_videos_count"],
@@ -169,9 +171,9 @@ def get_game_data(game_slug, game_name, metascore, userscore, release_date):
         "onPC": rawg_details["onPC"],
         "onPlaystation": rawg_details["onPlaystation"],
         "onSwitch": rawg_details["onSwitch"],
-        "onWii": rawg_details["onWii"],
         "onMac": rawg_details["onMac"],
         "onIOS": rawg_details["onIOS"],
+        "onWii": rawg_details["onWii"],
         "onAndroid": rawg_details["onAndroid"],
         "ratings_count": rawg_details["ratings_count"],
         "genres": rawg_details["genres"],
@@ -187,6 +189,9 @@ def metacritic_games_data(start_page, end_page):
     soup = BeautifulSoup(features="lxml")
     # Get all games in all pages
     for i in range(start_page, end_page):
+        current_page = i
+        pages_count = end_page - start_page
+        print(f"Page: {current_page}/{pages_count}")
         page_url = BROWSE_URL + "page={0}".format(i)
         req = requests.get(page_url, headers=HEADERS)
         soup.append(bs4.BeautifulSoup(req.text, "lxml"))
@@ -234,5 +239,5 @@ def metacritic_games_data(start_page, end_page):
 
 # Main
 
-df = metacritic_games_data(100, 150)
+df = metacritic_games_data(1, 10)
 print(df)
